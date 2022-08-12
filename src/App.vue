@@ -1,19 +1,42 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <AppUserList>
+      <template #userlist="{ userlist }">
+        <AppUserCardList :list="userlist">
+          <template #secondrow="{ item, remove }">
+            <AppButton :typeButton="'danger'" @click="remove(item)">
+              Remove
+            </AppButton>
+          </template>
+        </AppUserCardList>
+      </template>
+      <template #loading>
+        <AppSpinner />
+      </template>
+    </AppUserList>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppUserList from "./components/AppUserList.vue";
+import AppSpinner from "./components/AppSpinner.vue";
+import AppButton from "./components/AppButton.vue";
+import AppUserCardList from "./components/AppUserCardList.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    AppUserList,
+    AppSpinner,
+    AppButton,
+    AppUserCardList,
+  },
+  methods: {
+    log() {
+      console.log("Hi!");
+    },
+  },
+};
 </script>
 
 <style>
