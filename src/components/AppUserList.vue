@@ -4,7 +4,7 @@
     <slot
       name="userlist"
       :count="data.results.length"
-      :userlist="data.results"
+      :users="data.results"
       :remove="remove"
       v-if="state === 'loaded'"
     >
@@ -20,7 +20,7 @@
               />
               <div>
                 <div>{{ item.name.first }}</div>
-                <slot name="secondrow" :item="item" :remove="remove">haha</slot>
+                <slot name="secondrow" :remove="remove" :item="item"></slot>
               </div>
             </div>
           </slot>
